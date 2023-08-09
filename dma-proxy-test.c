@@ -301,7 +301,7 @@ static void rx_request(struct channel *channel_ptr)
 	buffer_id = channel_ptr->buffer_id;
 	channel_ptr->buf_ptr[buffer_id].length = test_size;
 
-	printf("buf_ptr[buffer_id].length %d\n", POINT_BYTE);
+	printf("buf_ptr[buffer_id].length %d\n", test_size);
 
 	ioctl(channel_ptr->fd, START_XFER, &buffer_id);
 	printf("ioctl START_XFER\n");
@@ -438,12 +438,13 @@ int main(int argc, char *argv[])
 
 	num_transfers = 1;
 	printf("get argc\n");
-	if (argc >= 2){
-		test_size = atoi(argv[1]);
-		test_size *= 1024;
-	} else {
-		test_size = POINT_BYTE;
-	}
+	// if (argc >= 2){
+	// 	test_size = atoi(argv[1]);
+	// 	test_size *= 1024;
+	// } else {
+	// 	test_size = POINT_BYTE;
+	// }
+	test_size = POINT_BYTE;
 	printf("test_size = %d\n", test_size);
 
 	if (argc >= 3){
